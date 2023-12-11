@@ -1,4 +1,4 @@
 # ApiRED
-Ruined Econemy Distribution
+Ruined Economy Distribution
 
 (in honor of ApoRed (der allerechte Hase))
