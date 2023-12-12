@@ -1,0 +1,30 @@
+
+# def name (input-variable)
+fresh main(argument):
+    # indentation instead of curly brackets
+
+    # if(argument == "Test arg1") --- comparing variable to value
+    wenn(argument ist "Test arg1"):
+        sag(argument)
+
+    # if(argument == argument2) --- comparing two variables
+    wenn(argument ist derAllerechte argument2):
+        ...
+
+    # else if(argument not "Test arg1") --- NOT
+    sonst wenn(argument nicht "Test arg1"):
+        ...
+
+    # else if((argument not "Test arg1") and (not "Test arg2")) --- NOR
+    sonst wenn((argument nicht "Test arg1") und (nicht "Test arg2")):
+        ...
+    
+    # if(argument is Null) --- EQUALS
+    wenn(argument ist Insimodus):
+        ...
+
+    # autotype name = value
+    argument = "Test arg2"
+    i = 7
+
+Willst du mich f*cken, main()
