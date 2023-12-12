@@ -8,7 +8,7 @@ fresh main(argument):
         sag(argument)
 
     # if(argument == argument2): --- comparing two variables
-    wenn argument ist derAllerechte argument2:
+    wenn argument ist derallerechte argument2:
         ...
 
     # else if(argument not "Test arg1"): --- NOT
