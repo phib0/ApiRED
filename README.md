@@ -1,5 +1,5 @@
-# ApiRED
-Ruined Economy Distribution
+# ApiRED 
+Ruined Economy Distribution (aka Insimodus)
 
 (in honor of ApoRed (der allerechte Hase))
 
