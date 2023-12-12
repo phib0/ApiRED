@@ -27,4 +27,5 @@ fresh main(argument):
     argument = "Test arg2"
     i = 7
 
+# main() --- executing function
 Willst du mich f*cken, main()
