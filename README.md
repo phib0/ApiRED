@@ -4,9 +4,9 @@ Ruined Economy Distribution (aka Insimodus)
 (in honor of ApoRed (der allerechte Hase))
 
 Disclaimer:
-    This isn't intended to offend or insult anyone and serves a parodic purpose.
+	This isn't intended to offend or insult anyone and serves a parodic purpose.
 
-    An ApoRed: 
-        Wir hoffen, dass Du das hier lustig findest. 
-        Wenn Du etwas hiergegen hast, lass es uns wissen.
+	An ApoRed: 
+		Wir hoffen, dass Du das hier lustig findest. 
+		Wenn Du etwas hiergegen hast, lass es uns wissen.
 
