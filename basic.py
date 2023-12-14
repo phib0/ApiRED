@@ -506,9 +506,9 @@ def run(fn, text):
     result      = interpreter.visit(ast.node, context)
     
     # end timer
-    end     = time.perf_counter()
+    end = time.perf_counter()
     if (end - start) >= 1000: timer = f"Time taken: {end - start}s"
-    else: timer   = f"Time taken: {(end - start)*0.001}ms"
+    else: timer = f"Time taken: {(end - start)*0.001}ms"
     print(timer)
 
     return result.value, result.error
