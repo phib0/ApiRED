@@ -16,7 +16,7 @@ fresh main(argument):
         ...
 
     # else if((argument not "Test arg1") and (not "Test arg2")): --- NOR
-    sonst wenn (argument ist_goofy "Test arg1") und (ist_goofy "Test arg2"):
+    sonst wenn (argument nicht "Test arg1") und (nicht "Test arg2"):
         ...
     
     # if(argument is Null): --- EQUALS NULL
