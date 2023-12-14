@@ -167,7 +167,7 @@ class Lexer:
                 pos_start = self.pos.copy()
                 char = self.current_char
                 self.advance()
-                return [], IllegalCharError(pos_start, self.pos, "'" + char + "'")
+                return [], IllegalCharError(pos_start, self.pos, f"'{char}'")
 
         tokens.append(Token(TT_EOF, pos_start=self.pos))
         return tokens, None
@@ -398,18 +398,8 @@ class Number:
         
     def to_power_of(self, other):
         if isinstance(other, Number):
-            prod = 1
-            if other.value < 0:
-                val = other.value *-1
-                for _ in range(val):
-                    prod *= self.value
-                return Number((1/prod)).set_context(self.context), None
-            elif other.value == 0:
-                return Number(1).set_context(self.context), None
-            else:
-                for _ in range(other.value):
-                    prod *= self.value
-                return Number(prod).set_context(self.context), None
+            return Number(self.value**other.value).set_context(self.context), None
+            
         
 
     def __repr__(self):
