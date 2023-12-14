@@ -5,6 +5,7 @@ fresh main(argument):
 
     # if(argument == "Test arg1"): --- comparing variable to value
     wenn argument ist "Test arg1":
+        #print(argument)
         sag(argument)
 
     # if(argument == argument2): --- comparing two variables
