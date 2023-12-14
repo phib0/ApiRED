@@ -13,7 +13,7 @@ fresh main(argument):
 ```
 Willst_du_mich_f*cken, main()
 ```
-> Calles a function named `main`
+> Calls a function named `main`
 
 ## Comparing (if, else if)
 
