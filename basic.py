@@ -424,7 +424,7 @@ class Parser:
             if res.error: return res
             return res.success(VarAssignNode(var_name, expr))
         
-        #if self.current_tok.type == TT_IDENTIFIER: # needs improvement
+        #if self.current_tok.type == TT_IDENTIFIER:
             var_name = self.current_tok
             identifier = ''.join(str(var_name)).removeprefix("IDENTIFIER:")
             var = global_symbol_table.get(identifier)
