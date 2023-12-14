@@ -6,6 +6,7 @@
 #######################################
 
 from strings_with_arrows import *
+import time
 
 #######################################
 # CONSTANTS
@@ -19,15 +20,16 @@ DIGITS = '0123456789'
 
 class Error:
     def __init__(self, pos_start, pos_end, error_name, details):
-        self.pos_start = pos_start
-        self.pos_end = pos_end
+        self.pos_start  = pos_start
+        self.pos_end    = pos_end
         self.error_name = error_name
-        self.details = details
+        self.details    = details
     
     def as_string(self):
-        result  = f'{self.error_name}: {self.details}\n'
+        result = f'{self.error_name}: {self.details}\n'
         result += f'File {self.pos_start.fn}, line {self.pos_start.ln + 1}'
-        result += '\n\n' + string_with_arrows(self.pos_start.ftxt, self.pos_start, self.pos_end)
+        result += '\n\n' + string_with_arrows(self.pos_start.ftxt, 
+                                              self.pos_start, self.pos_end)
         return result
 
 class IllegalCharError(Error):
@@ -46,7 +48,8 @@ class RTError(Error):
     def as_string(self):
         result  = self.generate_traceback()
         result += f'{self.error_name}: {self.details}'
-        result += '\n\n' + string_with_arrows(self.pos_start.ftxt, self.pos_start, self.pos_end)
+        result += '\n\n' + string_with_arrows(self.pos_start.ftxt, 
+                                              self.pos_start, self.pos_end)
         return result
 
     def generate_traceback(self):
@@ -67,11 +70,11 @@ class RTError(Error):
 
 class Position:
     def __init__(self, idx, ln, col, fn, ftxt):
-        self.idx = idx
-        self.ln = ln
-        self.col = col
-        self.fn = fn
-        self.ftxt = ftxt
+        self.idx    = idx
+        self.ln     = ln
+        self.col    = col
+        self.fn     = fn
+        self.ftxt   = ftxt
 
     def advance(self, current_char=None):
         self.idx += 1
@@ -173,9 +176,9 @@ class Lexer:
         return tokens, None
 
     def make_number(self):
-        num_str = ''
-        dot_count = 0
-        pos_start = self.pos.copy()
+        num_str     = ''
+        dot_count   = 0
+        pos_start   = self.pos.copy()
 
         while self.current_char != None and self.current_char in DIGITS + '.':
             if self.current_char == '.':
@@ -199,20 +202,20 @@ class NumberNode:
     def __init__(self, tok):
         self.tok = tok
 
-        self.pos_start = self.tok.pos_start
-        self.pos_end = self.tok.pos_end
+        self.pos_start  = self.tok.pos_start
+        self.pos_end    = self.tok.pos_end
 
     def __repr__(self):
         return f'{self.tok}'
 
 class BinOpNode:
     def __init__(self, left_node, op_tok, right_node):
-        self.left_node = left_node
-        self.op_tok = op_tok
+        self.left_node  = left_node
+        self.op_tok     = op_tok
         self.right_node = right_node
 
-        self.pos_start = self.left_node.pos_start
-        self.pos_end = self.right_node.pos_end
+        self.pos_start  = self.left_node.pos_start
+        self.pos_end    = self.right_node.pos_end
 
     def __repr__(self):
         return f'({self.left_node}, {self.op_tok}, {self.right_node})'
@@ -375,15 +378,18 @@ class Number:
 
     def added_to(self, other):
         if isinstance(other, Number):
-            return Number(self.value + other.value).set_context(self.context), None
+            return Number(self.value 
+                          + other.value).set_context(self.context), None
 
     def subbed_by(self, other):
         if isinstance(other, Number):
-            return Number(self.value - other.value).set_context(self.context), None
+            return Number(self.value 
+                          - other.value).set_context(self.context), None
 
     def multed_by(self, other):
         if isinstance(other, Number):
-            return Number(self.value * other.value).set_context(self.context), None
+            return Number(self.value 
+                          * other.value).set_context(self.context), None
 
     def dived_by(self, other):
         if isinstance(other, Number):
@@ -394,11 +400,13 @@ class Number:
                     self.context
                 )
 
-            return Number(self.value / other.value).set_context(self.context), None
+            return Number(self.value 
+                          / other.value).set_context(self.context), None
         
     def to_power_of(self, other):
         if isinstance(other, Number):
-            return Number(self.value**other.value).set_context(self.context), None
+            return Number(self.value 
+                          ** other.value).set_context(self.context), None
             
         
 
@@ -411,8 +419,8 @@ class Number:
 
 class Context:
     def __init__(self, display_name, parent=None, parent_entry_pos=None):
-        self.display_name = display_name
-        self.parent = parent
+        self.display_name     = display_name
+        self.parent           = parent
         self.parent_entry_pos = parent_entry_pos
 
 #######################################
@@ -432,7 +440,8 @@ class Interpreter:
 
     def visit_NumberNode(self, node, context):
         return RTResult().success(
-            Number(node.tok.value).set_context(context).set_pos(node.pos_start, node.pos_end)
+            Number(node.tok.value).set_context(context).set_pos(
+                node.pos_start, node.pos_end)
         )
 
     def visit_BinOpNode(self, node, context):
@@ -442,7 +451,7 @@ class Interpreter:
         right = res.register(self.visit(node.right_node, context))
         if res.error: return res
 
-        if node.op_tok.type == TT_PLUS:
+        if   node.op_tok.type == TT_PLUS:
             result, error = left.added_to(right)
         elif node.op_tok.type == TT_MINUS:
             result, error = left.subbed_by(right)
@@ -478,6 +487,9 @@ class Interpreter:
 #######################################
 
 def run(fn, text):
+    # start timer
+    start = time.perf_counter()
+    
     # Generate tokens
     lexer = Lexer(fn, text)
     tokens, error = lexer.make_tokens()
@@ -490,7 +502,13 @@ def run(fn, text):
 
     # Run program
     interpreter = Interpreter()
-    context = Context('<program>')
-    result = interpreter.visit(ast.node, context)
+    context     = Context('<program>')
+    result      = interpreter.visit(ast.node, context)
+    
+    # end timer
+    end     = time.perf_counter()
+    if (end - start) >= 1000: timer = f"Time taken: {end - start}s"
+    else: timer   = f"Time taken: {(end - start)*0.001}ms"
+    print(timer)
 
     return result.value, result.error
