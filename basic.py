@@ -591,7 +591,7 @@ class SymbolTable:
     def set(self, name, value):
         self.symbols[name] = value
 
-    def remove(self, name):
+    def remove(self, name): # weggesneaked
         del self.symbols[name]
 
 #######################################
