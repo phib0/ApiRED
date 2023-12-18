@@ -58,19 +58,19 @@ i = 7
 ```
 i unterhase 1
 ```
-> Decrement a variable called `i` by `1``
+> Decrement a variable called `i` by `1`
 
 ```
 i schlauer_hase 1
 ```
-> Increment a variable called `i` by `1``
+> Increment a variable called `i` by `1`
 
 ## Loops
 
 ```
 digga i besser_als 5:
 ```
-> Loop which runs while a variable called `i` is greater than `5``
+> Loop which runs while a variable called `i` is greater than `5`
 
 ```
 bombenprank
