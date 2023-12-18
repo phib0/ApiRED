@@ -1,6 +1,6 @@
 # Syntax
 
-> This language works with indention after function definition, if, etc. (Just like Python).
+> This language works with indention after function definition, `if`, etc. (Just like Python).
 
 ## Functions
 
