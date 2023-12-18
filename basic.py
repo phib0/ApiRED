@@ -706,8 +706,8 @@ def run(fn, text):
     
     # end timer
     end = time.perf_counter()
-    if (end - start) >= 1000: timer = f"Time taken: {end - start}s"
-    else: timer = f"Time taken: {(end - start)*0.001}ms"
+    if (end - start) >= 1000: print(f"Time taken: {end - start}s")
+    else: print(f"Time taken: {(end - start)*0.001}ms")
     print(timer)
 
     return result.value, result.error
