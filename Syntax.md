@@ -18,7 +18,7 @@ Willst_du_mich_f*cken, main()
 ## Comparing (if, else if)
 
 ```
-wenn argument ist "Test arg1":`
+wenn argument ist "Test arg1":
   ...
 ```
 > Comparing a variable named `argument` to a value. 
